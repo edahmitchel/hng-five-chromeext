@@ -14,7 +14,7 @@ async function bootstrap() {
     },
   });
 
-  const upload = multer({ storage });
+  // const upload = multer({ storage });
   app.use('/static', express.static(join(__dirname, '..', 'uploads')));
   // app.useGlobalInterceptors(FileInterceptor('files', { storage }));
 
