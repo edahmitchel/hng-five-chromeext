@@ -7,17 +7,17 @@ import path, { join } from 'path';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // Configure Multer storage for local disk
-  const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      const dest = path.join(__dirname, '..', '..', 'uploads/');
-      cb(null, dest);
-    }, // Directory to store files locally
-    filename: (req, file, callback) => {
-      callback(null, Date.now() + '-' + file.originalname);
-    },
-  });
+  // const storage = multer.diskStorage({
+  //   destination: (req, file, cb) => {
+  //     const dest = path.join(__dirname, '..', '..', 'uploads/');
+  //     cb(null, dest);
+  //   }, // Directory to store files locally
+  //   filename: (req, file, callback) => {
+  //     callback(null, Date.now() + '-' + file.originalname);
+  //   },
+  // });
 
-  const upload = multer({ storage });
+  // const upload = multer({ storage });
   app.use('/static', express.static(join(__dirname, '..', 'uploads')));
   // app.useGlobalInterceptors(FileInterceptor('files', { storage }));
 
